@@ -1,42 +1,27 @@
 //@flow
-import React from 'react';
-import './App.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect
-} from 'react-router-dom';
-import Page1 from './pages/Page1';
-import Page2 from './pages/Page2';
+import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import SideMenu from './components/SideMenu/SideMenu';
+import Header from './components/Header/Header';
+import Routes from './Routes';
+
+const useStyles = makeStyles(() => ({
+    root: {
+        flexGrow: 1
+    }
+}));
 
 const App = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const classes = useStyles();
     return (
         <Router>
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/page1">Page 1</Link>
-                        </li>
-                        <li>
-                            <Link to="/page2">Page 2</Link>
-                        </li>
-                    </ul>
-                </nav>
-
-                <Switch>
-                    <Route path="/page1">
-                        <Page1 />
-                    </Route>
-                    <Route path="/page2">
-                        <Page2 />
-                    </Route>
-                    <Route path="/">
-                        <Redirect to="/page1" />
-                    </Route>
-                </Switch>
+            <div className={classes.root}>
+                <SideMenu isOpen={isMenuOpen} onClose={toggleMenu} />
+                <Header onOpenMenu={toggleMenu} />
+                <Routes />
             </div>
         </Router>
     );
