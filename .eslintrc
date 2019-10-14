@@ -1,0 +1,39 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "plugins": [
+      "react",
+      "flowtype",
+      "prettier",
+      "jest",
+      "react-hooks"
+    ],
+    "rules": {
+      "max-lines": ["error", 400],
+      "camelcase": ["error", { "properties": "never" }],
+      "function": "off",
+      "prettier/prettier": "error",
+      "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+      "react-hooks/exhaustive-deps": "error" // Checks effect dependencies
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:flowtype/recommended",
+        "prettier",
+        "prettier/flowtype",
+        "prettier/react",
+        "prettier/standard",
+        "jest-enzyme",
+        "plugin:jest/recommended"
+    ],
+    "settings": {
+        "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+        }
+    }
+}

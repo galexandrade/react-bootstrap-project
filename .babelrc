@@ -1,0 +1,13 @@
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "exclude": ["transform-regenerator"],
+                "useBuiltIns": false
+            }
+        ],
+        "@babel/react",
+        "@babel/preset-flow"
+    ]
+}
